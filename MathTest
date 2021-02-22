@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <chrono>
+using namespace std;
+int main(){
+  int x = 0;
+  int mistakes = 0;
+  srand(time(nullptr));
+  for (int questions=0; questions < 6; questions++){
+  int digit1 = rand()%9 +1;
+  int digit2 = rand()%9 +1;
+  cout << digit1 << "+" << digit2 << "=";
+  auto start = chrono::high_resolution_clock::now();
+  cin >> x;
+  auto finish = chrono::high_resolution_clock::now();
+  chrono::duration<double> elapsed = finish - start;
+  cout << "Elapsed time: " << elapsed.count() << " seconds" << endl;
+  if (digit1 + digit2 != x) {cout << "Incorrect." << endl; mistakes++;}
+  }
+  cout << "You got " << mistakes << " questions wrong.";
+return 0;
+}
